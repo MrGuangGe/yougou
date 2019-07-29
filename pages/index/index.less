@@ -1,0 +1,51 @@
+swiper{
+    height: 340rpx;
+  }
+  .navCate{
+    display: flex;
+    padding: 10rpx;
+  }
+  .navCate_item{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navCate_item image{
+    width: 66%;
+  }
+.clearfix::after {
+  content:'.';    /*给生成的标签元素添加一个象征性的内容*/
+  display:block;  /*将这个行内伪元素转换成块级伪元素*/
+  clear: both;    /*给生成的伪元素添加清除浮动的功能*/        
+  height: 0;      /*将content内容中的.不在页面中显示*/
+  visibility: hidden;  /*再加一层保险，将多余的部分隐藏掉，不要对页面布局造成影响*/
+}
+.floor{
+  margin-top: 10rpx;
+  padding: 0 10rpx;
+  .floor_item{
+    .floor_title{
+      padding-top: 10rpx;
+    }
+    .floor_content{
+      .floor_content_item{
+        width: 33.33%;
+        float: left;
+        /* 后四个超链接 */
+        &:nth-last-child(-n+4) {
+          /* 让图片的宽度和高度 100%  */
+          height: (750rpx/3) * (386/232/2);
+          border-left: 10rpx solid #fff;
+          image {
+            height: 100%;
+          }
+        }
+        /* 后两个超链接 */
+        &:nth-last-child(-n+2){
+          border-top: 10rpx solid #fff;
+        }
+      }
+    }
+  }
+}

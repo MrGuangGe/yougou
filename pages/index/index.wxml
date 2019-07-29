@@ -2,7 +2,12 @@
     <!-- 引入搜索框组件并使用 -->
     <Search></Search>
     <!-- 轮播图 -->
-    <swiper indicator-dots indicator-color="rgba(0,0,0,0.3)" autoplay interval="2222" circular>
+    <swiper 
+    indicator-dots 
+    indicator-color="rgba(0,0,0,0.3)" 
+    autoplay 
+    interval="2222" 
+    circular>
         <swiper-item wx:for="{{swiperList}}" wx:key="item.goods_id">
             <navigator url="{{item.navigator_url}}" open-type="{{item.open_type}}">
                 <image src="{{item.image_src}}" mode="widthFix" />
@@ -11,8 +16,40 @@
     </swiper>
     <!-- 分类列表 -->
     <view class="navCate">
-        <navigator wx:for="{{navCateList}}" wx:key="image_src" class="navCate_item" open-type="{{item.open_type}}" url="{{item.navigator_url}}">
+        <navigator 
+        class="navCate_item" 
+        wx:for="{{navCateList}}" 
+        wx:key="image_src" 
+        open-type="{{item.open_type}}" 
+        url="{{item.navigator_url}}">
             <image src="{{item.image_src}}" mode="widthFix" />
         </navigator>
+    </view>
+    <!-- 楼层列表 -->
+    <view class="floor">
+        <view 
+        class="floor_item"
+        wx:for="{{floorList}}" 
+        wx:key="{{item1.image_src}}"
+        wx:for-item="item1"
+        wx:for-index="index1"
+        >
+            <!-- 标题 -->
+            <view class="floor_title">
+                <image src="{{item1.floor_title.image_src}}" mode="widthFix" />
+            </view>
+            <!-- 内容 -->
+            <view class="floor_content clearfix">
+                <navigator 
+                class="floor_content_item"
+                wx:for="{{item1.product_list}}"
+                wx:key="{{item2.image_src}}" 
+                wx:for-item="item2"
+                wx:for-index="index2"
+                >
+                    <image src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" />
+                </navigator>
+            </view>
+        </view>
     </view>
 </view>
