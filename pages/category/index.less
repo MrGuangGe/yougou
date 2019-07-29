@@ -1,0 +1,13 @@
+.cate_list{
+    display: flex;
+    /* 当前高度 = 视口的高度 - 头部搜索框的高度 */
+    /* 因为 less直接把除法运算给你执行了！*/
+    /* 不想less来处理 calc中的代码 直接原样输出 */
+    height: ~"calc( 100vh - 80rpx)";
+    .cate_left{
+        flex: 2;
+    }
+    .cate_right{
+        flex: 4;
+    }
+}

@@ -1,1 +1,14 @@
-<view>分类</view>
+<!-- 引入头部搜索框并使用 -->
+<Search></Search>
+
+<!-- 列表内容 -->
+<!-- 左侧滚动的内容 -->
+<view class="cate_list">
+    <scroll-view class="cate_left" scroll-y>
+        
+    </scroll-view>
+    <!-- 右侧滚动的内容 -->
+    <scroll-view class="cate_right" scroll-y>
+        
+    </scroll-view>
+</view>
