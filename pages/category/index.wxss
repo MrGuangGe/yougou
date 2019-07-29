@@ -6,8 +6,47 @@
   height: calc( 100vh - 80rpx);
 }
 .cate_list .cate_left {
-  flex: 2;
+  flex: 1;
+}
+.cate_list .cate_left .cate_left_item {
+  font-size: 32rpx;
+}
+.cate_list .cate_left .cate_left_item navigator {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cate_list .cate_left .cate_left_item .active {
+  color: var(--themeColor);
+  border-left: 6rpx solid var(--themeColor);
 }
 .cate_list .cate_right {
   flex: 4;
+}
+.cate_list .cate_right .cate_right_item .cate_right_title {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 32rpx;
+}
+.cate_list .cate_right .cate_right_item .cate_right_image {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cate_list .cate_right .cate_right_item .cate_right_image navigator {
+  width: 33.33%;
+  text-align: center;
+}
+.cate_list .cate_right .cate_right_item .cate_right_image navigator image {
+  width: 50%;
+}
+.cate_list .cate_right .cate_right_item .cate_right_image navigator .cate_right_image_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 32rpx;
 }

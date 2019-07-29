@@ -2,13 +2,45 @@
 <Search></Search>
 
 <!-- 列表内容 -->
-<!-- 左侧滚动的内容 -->
 <view class="cate_list">
+    <!-- 左侧滚动的内容 -->
     <scroll-view class="cate_left" scroll-y>
-        
+        <view class="cate_left_item">
+            <navigator 
+            class="{{currentIndex===index?'active':''}}" 
+            wx:for="{{leftList}}" 
+            wx:key="{{item.cat_id}}" 
+            bindtap="hadChoseItem"
+            data-index="{{index}}">
+                {{item.cat_name}}
+            </navigator>
+        </view>
     </scroll-view>
     <!-- 右侧滚动的内容 -->
     <scroll-view class="cate_right" scroll-y>
-        
+        <view 
+        class="cate_right_item"
+        wx:for="{{rightList}}"
+        wx:key="{{item1.cat_id}}"
+        wx:for-item="item1"
+        wx:for-index="index1"
+        >
+            <view class="cate_right_title">
+                <text>●</text>
+                <text>{{item1.cat_name}}</text>
+                <text>●</text>
+            </view>
+            <view class="cate_right_image">
+            <navigator
+            wx:for="{{item1.children}}"
+            wx:key="{{item2.cat_id}}"
+            wx:for-item="item2"
+            wx:for-index="index2"
+            >
+                <image src="{{item2.cat_icon}}" mode="widthFix" />
+                <view class="cate_right_image_name">{{item2.cat_name}}</view>
+            </navigator>
+            </view>
+        </view>
     </scroll-view>
 </view>

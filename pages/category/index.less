@@ -5,9 +5,50 @@
     /* 不想less来处理 calc中的代码 直接原样输出 */
     height: ~"calc( 100vh - 80rpx)";
     .cate_left{
-        flex: 2;
+        flex: 1;
+        .cate_left_item{
+            font-size: 32rpx;
+            navigator{
+                height: 80rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .active{
+                color: var(--themeColor);
+                border-left: 6rpx solid var(--themeColor);
+            }
+        }
     }
     .cate_right{
         flex: 4;
+        .cate_right_item{
+            .cate_right_title{
+                height: 80rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #666;
+                font-size: 32rpx;
+            }
+            .cate_right_image{
+                display: flex;
+                flex-wrap: wrap;
+                navigator{
+                    width: 33.33%;
+                    text-align: center;
+                    image{
+                        width: 50%;
+                    }
+                    .cate_right_image_name{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: #666;
+                        font-size: 32rpx;
+                    }
+                }
+            }
+        }
     }
 }

@@ -3,7 +3,9 @@ Page({
     // 左侧栏数据
     leftList: [],
     // 右侧栏数据
-    rightList: []
+    rightList: [],
+    // 初始索引值，为了添加类active的样式给选中的左侧栏
+    currentIndex: 0
   },
   onLoad: function (options) {
     this.getLeftList()
@@ -25,6 +27,14 @@ Page({
           rightList
         })
       }
+    })
+  },
+  // 添加点击事件处理选取左侧栏
+  hadChoseItem(event) {
+    // console.log(event)
+    const { index } = event.currentTarget.dataset
+    this.setData({
+      currentIndex: index
     })
   }
 })
