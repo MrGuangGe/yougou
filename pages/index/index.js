@@ -4,12 +4,13 @@ Page({
     swiperList: []
   },
   onLoad: function (options) {
+    this.getSwiperList()
+  },
+  // 发送请求获取轮播图数据
+  getSwiperList(){
     wx.request({
       url: 'https://api.zbztb.cn/api/public/v1/home/swiperdata',
-      header: { 'content-type': 'application/json' },
       method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
       success: (res) => {
         // console.log(res)
         let { message } = res.data
@@ -17,10 +18,6 @@ Page({
           swiperList: message
         })
       }
-    });
-
-  },
-  onShow: function () {
-
+    })
   }
 })

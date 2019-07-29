@@ -17,7 +17,7 @@
   "window": {
     "navigationBarTitleText": "有狗",
     "navigationBarBackgroundColor": "#ff2d4a",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark",
     "backgroundColor": "#ee195b"
