@@ -1,12 +1,3 @@
-.search{
-  width: 100%;
-  height: 30px;
-  background-color: #ff2d4a;
-}
-.search .search_item{
-  border: 1px solid #ff2d4a;
-  border-radius: 8rpx;
-  margin: 0 20rpx;
-  background-color: #fff;
-  padding-left: 140px;
+swiper{
+  height: 340rpx;
 }

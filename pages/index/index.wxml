@@ -1,8 +1,6 @@
 <view>
-    <!-- 搜索框 -->
-    <view class="search">
-        <input class="search_item" type="text" placeholder="搜索"> </input>
-    </view>
+    <!-- 引入搜索框组件并使用 -->
+    <Search></Search>
     <!-- 轮播图 -->
     <swiper indicator-dots indicator-color="rgba(0,0,0,0.3)" autoplay interval="2222" circular>
         <swiper-item wx:for="{{swiperList}}" wx:key="item.goods_id">
