@@ -1,3 +1,6 @@
+// 引入封装好的发送异步请求的方法 promise
+import { request } from "../../request/index.js"
+
 Page({
   data: {
     // 左侧栏数据
@@ -12,10 +15,11 @@ Page({
   },
   // 获取左侧栏数据
   getLeftList() {
-    wx.request({
-      url: 'https://api.zbztb.cn/api/public/v1/categories',
-      method: 'GET',
-      success: (res) => {
+    request({
+      url: "/categories",
+      method: 'GET'
+    })
+      .then(res => {
         // console.log(res.data)
         const { message } = res.data
         // 左侧栏数据
@@ -26,8 +30,10 @@ Page({
           leftList,
           rightList
         })
-      }
-    })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
   // 添加点击事件处理选取左侧栏
   hadChoseItem(event) {

@@ -1,3 +1,6 @@
+// 引入封装好的发送异步请求的方法 promise
+import { request } from "../../request/index.js"
+
 Page({
   data: {
     // 轮播图的数据
@@ -14,44 +17,50 @@ Page({
   },
   // 发送请求获取轮播图数据
   getSwiperList() {
-    wx.request({
-      url: 'https://api.zbztb.cn/api/public/v1/home/swiperdata',
-      method: 'GET',
-      success: (res) => {
-        // console.log(res)
+    request({
+      url: '/home/swiperdata',
+      method: 'GET'
+    })
+      .then(res => {
         let { message } = res.data
         this.setData({
           swiperList: message
         })
-      }
-    })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
   // 发送请求获取分类导航的数据
   getNavCateList() {
-    wx.request({
-      url: 'https://api.zbztb.cn/api/public/v1/home/catitems',
-      method: 'GET',
-      success: (res) => {
-        // console.log(res)
+    request({
+      url: '/home/catitems',
+      method: 'GET'
+    })
+      .then(res => {
         let { message } = res.data
         this.setData({
           navCateList: message
         })
-      }
-    })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
   // 发送请求获取分类导航的数据
   getFloorList() {
-    wx.request({
-      url: 'https://api.zbztb.cn/api/public/v1/home/floordata',
-      method: 'GET',
-      success: (res) => {
-        // console.log(res)
+    request({
+      url: '/home/floordata',
+      method: 'GET'
+    })
+      .then(res => {
         let { message } = res.data
         this.setData({
           floorList: message
         })
-      }
-    })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 })

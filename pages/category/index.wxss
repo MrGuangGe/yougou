@@ -10,16 +10,20 @@
 }
 .cate_list .cate_left .cate_left_item {
   font-size: 32rpx;
+  background-color: #e9e5e5;
 }
 .cate_list .cate_left .cate_left_item navigator {
   height: 80rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 4rpx solid #666;
+  padding: 0 10rpx;
 }
 .cate_list .cate_left .cate_left_item .active {
   color: var(--themeColor);
   border-left: 6rpx solid var(--themeColor);
+  background-color: #fff;
 }
 .cate_list .cate_right {
   flex: 4;
