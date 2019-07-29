@@ -1,3 +1,16 @@
 swiper{
   height: 340rpx;
 }
+.navCate{
+  display: flex;
+  padding: 10rpx;
+}
+.navCate_item{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navCate_item image{
+  width: 66%;
+}

@@ -9,4 +9,10 @@
             </navigator>
         </swiper-item>
     </swiper>
+    <!-- 分类列表 -->
+    <view class="navCate">
+        <navigator wx:for="{{navCateList}}" wx:key="image_src" class="navCate_item" open-type="{{item.open_type}}" url="{{item.navigator_url}}">
+            <image src="{{item.image_src}}" mode="widthFix" />
+        </navigator>
+    </view>
 </view>
