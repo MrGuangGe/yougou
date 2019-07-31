@@ -5,7 +5,7 @@
     <block wx:if="{{tabs[0].isActive}}">
         <!-- 商品列表静态布局 -->
         <view class="goods_list">
-            <navigator class="goods_group" wx:for="{{goodsList}}" wx:key="goods_small_logo">
+            <navigator class="goods_group" wx:for="{{goodsList}}" wx:key="goods_small_logo" url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
                 <view class="goods_group_image">
                     <image src="{{item.goods_small_logo||'https://tva4.sinaimg.cn/large/007DFXDhgy1g5j56xc3eyg30b408cwef.gif'}}" mode="widthFix" />
                 </view>

@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -54,6 +54,13 @@
 					"name": "商品列表",
 					"pathName": "pages/goods_list/index",
 					"query": "cid=19",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/goods_detail/index",
+					"query": "goods_id=27283",
 					"scene": null
 				}
 			]
