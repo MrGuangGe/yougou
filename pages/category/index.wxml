@@ -17,7 +17,7 @@
         </view>
     </scroll-view>
     <!-- 右侧滚动的内容 -->
-    <scroll-view class="cate_right" scroll-y>
+    <scroll-view class="cate_right" scroll-y scroll-top="{{scrollTop}}">
         <view 
         class="cate_right_item"
         wx:for="{{rightList}}"
