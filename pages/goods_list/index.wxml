@@ -1,2 +1,39 @@
-<!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<!-- 引入头部搜索框并使用 -->
+<Search></Search>
+
+<!-- 商品列表静态布局 -->
+<view class="goods_list">
+    <view class="goods_group">
+        <view class="goods_group_image">
+            <image src="https://api.zbztb.cn/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg" mode="widthFix" />
+        </view>
+        <view class="goods_group_content">
+            <view class="goods_name">
+                您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您
+            </view>
+            <view class="goods_price">$999</view>
+        </view>
+    </view>
+    <view class="goods_group">
+        <view class="goods_group_image">
+            <image src="https://api.zbztb.cn/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg" mode="widthFix" />
+        </view>
+        <view class="goods_group_content">
+            <view class="goods_name">
+                您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您
+            </view>
+            <view class="goods_price">$999</view>
+        </view>
+    </view>
+    <view class="goods_group">
+        <view class="goods_group_image">
+            <image src="https://api.zbztb.cn/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg" mode="widthFix" />
+        </view>
+        <view class="goods_group_content">
+            <view class="goods_name">
+                您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您好您
+            </view>
+            <view class="goods_price">$999</view>
+        </view>
+    </view>
+</view>
