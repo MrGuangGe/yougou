@@ -4,7 +4,7 @@
 }
 .goods_list .goods_group .goods_group_image {
   flex: 1;
-  padding: 0 10rpx;
+  padding: 16rpx;
 }
 .goods_list .goods_group .goods_group_content {
   flex: 2;
