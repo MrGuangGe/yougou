@@ -51,6 +51,8 @@ Page({
         this.setData({
           goodsList: res.data.message.goods
         })
+        // 4.数据回来 手动关闭下拉刷新
+        wx.stopPullDownRefresh()
       })
       .catch(err => {
         console.log(err)
@@ -69,7 +71,15 @@ Page({
   },
   // 下拉刷新触发
   onPullDownRefresh: function () {
-
+    // 1 重置页码
+    // 2 重置data中的数组
+    // 3 重新发送请求
+    // 4 数据回来 手动关闭下拉刷新
+    this.queryParams.pagenum = 1
+    this.setData({
+      goodsList: []
+    })
+    this.getGoodsList()
   },
   // 滚动条触底触发
   onReachBottom: function () {
