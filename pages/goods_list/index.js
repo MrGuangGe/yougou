@@ -3,6 +3,24 @@ import { request } from "../../request/index.js"
 
 Page({
   data: {
+    // tabs栏的数据
+    tabs: [
+      {
+        id: 1,
+        value: "综合",
+        isActive: true
+      },
+      {
+        id: 2,
+        value: "销量",
+        isActive: false
+      },
+      {
+        id: 3,
+        value: "价格",
+        isActive: false
+      }
+    ],
     // 商品列表的数据
     goodsList: []
   },
@@ -37,6 +55,17 @@ Page({
       .catch(err => {
         console.log(err)
       })
+  },
+  // 子组件调用这个函数
+  handleAcceptIndex(event) {
+    // console.log(event)
+    const { index } = event.detail
+    // 获取源数组
+    let { tabs } = this.data;
+    tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false)
+    this.setData({
+      tabs
+    })
   },
   // 下拉刷新触发
   onPullDownRefresh: function () {

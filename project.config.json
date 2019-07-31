@@ -53,7 +53,7 @@
 					"id": 1,
 					"name": "商品列表",
 					"pathName": "pages/goods_list/index",
-					"query": "cid=6",
+					"query": "cid=19",
 					"scene": null
 				}
 			]
