@@ -1,9 +1,7 @@
 <!-- 轮播图 -->
 <swiper indicator-dots indicator-color="rgba(0,0,0,0.3)" autoplay interval="2222" circular>
-    <swiper-item wx:for="{{goodsDetailList.pics}}" wx:key="pics_mid">
-        <navigator>
-            <image src="{{item.pics_mid}}" mode="widthFix" />
-        </navigator>
+    <swiper-item wx:for="{{goodsDetailList.pics}}" wx:key="pics_mid" bindtap="previewImage" data-index="{{index}}">
+        <image src="{{item.pics_mid}}" mode="widthFix" />
     </swiper-item>
 </swiper>
 <!-- 商品详情 -->

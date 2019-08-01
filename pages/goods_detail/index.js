@@ -30,5 +30,15 @@ Page({
       .catch(err => {
         console.log(err)
       })
+  },
+  // 点击轮播图会全屏预览大图
+  previewImage(event) {
+    const { pics } = this.data.goodsDetailList
+    let urls = pics.map(val => val.pics_big)
+    let current = urls[event.currentTarget.dataset.index]
+    wx.previewImage({
+      urls,     // 需要预览的图片http链接列表
+      current   // 当前显示图片的http链接
+    })
   }
 })
