@@ -1,9 +1,17 @@
 Page({
   data: {
-
+    // 商品信息
+    goodsInfo: []
   },
   onLoad: function (options) {
-
+    // 获取商品信息的业务处理
+    let data = wx.getStorageSync("cart_add")
+    // 因为商品的属性名为数字 需要遍历对象并且把属性值放到一个数组中
+    let arr = Object.keys(data).map(item => data[item])
+    // 把数据赋值给data中的goodsInfo
+    this.setData({
+      goodsInfo: arr
+    })
   },
   // 添加收货地址
   addAddress() {

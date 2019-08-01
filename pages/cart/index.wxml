@@ -4,21 +4,18 @@
         <button plain type="primary" bindtap="addAddress">+收货地址</button>
     </view>
     <view class="cart_name">购物车</view>
-    <view class="cart_goodsinfo">
+    <view class="cart_goodsinfo" wx:for="{{goodsInfo}}" wx:key="goods_id">
         <checkbox class="goods_checkbox"></checkbox>
         <view class="goods_image">
-            <image src="http://image5.suning.cn/uimg/b2c/newcatentries/0070169353-000000000653854000_1_400x400.jpg" mode="widthFix" />
+            <image src="{{item.goods_small_logo}}" mode="widthFix" />
         </view>
         <view class="goods_deiail">
-            <navigator class="goods_deiail_name">
-                您好您好您好您好您好您好您好您好您好您好您好
-                您好您好您好您好您好您好您好您好您好您好您好您好
-            </navigator>
+            <navigator class="goods_deiail_name">{{item.goods_name}}</navigator>
             <view class="goods_deiail_btm">
-                <view class="goods_detail_price">￥999</view>
+                <view class="goods_detail_price">￥{{item.goods_price}}</view>
                 <view class="goods_detail_numchnage">
                     <button size="mini">-</button>
-                    <text>199</text>
+                    <text>{{item.num}}</text>
                     <button size="mini">+</button>
                 </view>
             </view>
