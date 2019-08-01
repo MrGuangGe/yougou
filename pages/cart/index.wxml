@@ -1,7 +1,7 @@
 <!-- 购物车里的商品 -->
 <view class="cart">
     <view class="cart_address">
-        <button plain type="primary">+收货地址</button>
+        <button plain type="primary" bindtap="addAddress">+收货地址</button>
     </view>
     <view class="cart_name">购物车</view>
     <view class="cart_goodsinfo">
