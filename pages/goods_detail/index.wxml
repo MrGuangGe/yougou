@@ -1,2 +1,27 @@
-<!--pages/goods_detail/index.wxml-->
-<text>pages/goods_detail/index.wxml</text>
+<!-- 轮播图 -->
+<swiper indicator-dots indicator-color="rgba(0,0,0,0.3)" autoplay interval="2222" circular>
+    <swiper-item wx:for="{{goodsDetailList.pics}}" wx:key="pics_mid">
+        <navigator>
+            <image src="{{item.pics_mid}}" mode="widthFix" />
+        </navigator>
+    </swiper-item>
+</swiper>
+<!-- 商品详情 -->
+<view class="goods">
+    <!-- 内容 -->
+    <view class="goods_content">
+        <view class="goods_content_price">${{goodsDetailList.goods_price}}</view>
+        <view class="goods_content_name">
+            <view class="goods_content_name-left">{{goodsDetailList.goods_name}}</view>
+            <view class="goods_content_name-right">
+                <view class="iconfont icon-shoucang"></view>
+                <view class="shoucang">收藏</view>
+            </view>
+        </view>
+    </view>
+    <!-- 图片 -->
+    <view class="goods_image">
+        <view class="goods_image_name">图文详情</view>
+        <rich-text class="goods_image_item" nodes="{{goodsDetailList.goods_introduce}}"></rich-text>
+    </view>
+</view>

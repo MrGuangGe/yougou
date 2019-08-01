@@ -2,26 +2,14 @@
 import { request } from "../../request/index.js"
 
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
-    // 商品详情数据
-    goodsDetailList: []
+    goodsDetailList: {}
   },
-  // 商品id
-  goods_id: 1,
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    // 通过形参options获取url上的参数-商品id
-    this.goods_id = options.goods_id
-    this.getGoodsDetailData()
+    this.getGoodsDetailData(options.goods_id)
   },
   // 获取商品详情的数据
-  getGoodsDetailData() {
-    let goods_id = this.goods_id
+  getGoodsDetailData(goods_id) {
     request({
       url: "/goods/detail",
       method: "GET",
@@ -30,7 +18,13 @@ Page({
       .then(res => {
         // console.log(res.data)
         this.setData({
-          goodsDetailList: res.data.message
+          goodsDetailList: {
+            goods_id: res.data.message.goods_id,
+            goods_price: res.data.message.goods_price,
+            pics: res.data.message.pics,
+            goods_name: res.data.message.goods_name,
+            goods_introduce: res.data.message.goods_introduce
+          }
         })
       })
       .catch(err => {
