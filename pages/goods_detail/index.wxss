@@ -42,3 +42,45 @@ swiper image {
   font-weight: 600;
   border-bottom: 10rpx solid #e2dfdf;
 }
+page {
+  padding-bottom: 88rpx;
+}
+.footer_tool {
+  display: flex;
+  height: 88rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  font-size: 28rpx;
+  border-top: 2rpx solid #ccc;
+}
+.footer_tool .tool_item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+.footer_tool .tool_item button {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.footer_tool .cart_add {
+  flex: 2;
+  background-color: orange;
+  font-size: 36rpx;
+  color: #fff;
+}
+.footer_tool .goods_buy {
+  flex: 2;
+  background-color: var(--themeColor);
+  font-size: 36rpx;
+  color: #fff;
+}

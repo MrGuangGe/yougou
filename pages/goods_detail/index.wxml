@@ -23,3 +23,22 @@
         <rich-text class="goods_image_item" nodes="{{goodsDetailList.goods_introduce}}"></rich-text>
     </view>
 </view>
+<!-- 底部工具栏 -->
+<view class="footer_tool">
+    <view class="tool_item">
+        <text class="iconfont icon-kefu"></text>
+        <view class="tool_name">联系客服</view>
+        <button open-type="contact"></button>
+    </view>
+    <view class="tool_item">
+        <text class="iconfont icon-yixianshi-"></text>
+        <view class="tool_name">分享</view>
+        <button open-type="share"></button>
+    </view>
+    <navigator class="tool_item" url="/pages/cart/index" open-type="switchTab">
+        <text class="iconfont icon-gouwuche"></text>
+        <view class="tool_name">购物车</view>
+    </navigator>
+    <view class="tool_item cart_add">加入购物车</view>
+    <view class="tool_item goods_buy">立即购买</view>
+</view>
