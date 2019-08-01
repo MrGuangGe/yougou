@@ -1,1 +1,39 @@
-<view>购物车</view>
+<!-- 购物车里的商品 -->
+<view class="cart">
+    <view class="cart_address">
+        <button plain type="primary">+收货地址</button>
+    </view>
+    <view class="cart_name">购物车</view>
+    <view class="cart_goodsinfo">
+        <checkbox class="goods_checkbox"></checkbox>
+        <view class="goods_image">
+            <image src="http://image5.suning.cn/uimg/b2c/newcatentries/0070169353-000000000653854000_1_400x400.jpg" mode="widthFix" />
+        </view>
+        <view class="goods_deiail">
+            <navigator class="goods_deiail_name">
+                您好您好您好您好您好您好您好您好您好您好您好
+                您好您好您好您好您好您好您好您好您好您好您好您好
+            </navigator>
+            <view class="goods_deiail_btm">
+                <view class="goods_detail_price">￥999</view>
+                <view class="goods_detail_numchnage">
+                    <button size="mini">-</button>
+                    <text>199</text>
+                    <button size="mini">+</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 底部栏 -->
+<view class="footer">
+    <checkbox class="footer_checkbox">全选</checkbox>
+    <view class="footer_total">
+        <view class="footer_total_top">
+            合计：<text>￥0</text>
+        </view>
+        <view class="footer_total_bottom">包含运费</view>
+    </view>
+    <view class="footer_buy">结算(0)</view>
+</view>

@@ -1,0 +1,100 @@
+.cart{
+    .cart_address{
+        button{
+            margin: 10rpx;
+        }
+    }
+    .cart_name{
+        padding: 10rpx;
+        color: var(--themeColor);
+        font-weight: 600;
+        border-bottom: 6rpx solid currentColor;
+    }
+    .cart_goodsinfo{
+        display: flex;
+        padding: 10rpx;
+        border-bottom: 2rpx solid #ccc;
+        .goods_checkbox{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .goods_image{
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .goods_deiail{
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .goods_deiail_name{
+                overflow: hidden;
+                display:-webkit-box;
+                -webkit-line-clamp:2;
+                -webkit-box-orient:vertical;
+            }
+            .goods_deiail_btm{
+                display: flex;
+                justify-content: space-between;
+                .goods_detail_price{
+                    color: var(--themeColor);
+                }
+                .goods_detail_numchnage{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text{
+                        padding: 0 10rpx;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 2rpx solid #ccc;
+    height: 88rpx;
+    display: flex;
+    font-size: 34rpx;
+    .footer_checkbox{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #666;
+        font-size: 30rpx;
+    }
+    .footer_total{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .footer_total_top{
+            text{
+                color: var(--themeColor);
+            }
+        }
+        .footer_total_bottom{
+            font-size: 30rpx;
+        }
+    }
+    .footer_buy{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--themeColor);
+        color: #fff;
+    }
+}
