@@ -23,7 +23,8 @@ Page({
             goods_price: res.data.message.goods_price,
             pics: res.data.message.pics,
             goods_name: res.data.message.goods_name,
-            goods_introduce: res.data.message.goods_introduce
+            // 因为iphone手机不支持.webp后缀的图片 所以最好把.webp改为.jpg/.png
+            goods_introduce: res.data.message.goods_introduce.replace(/\.webp/g, ".jpg")
           }
         })
       })
