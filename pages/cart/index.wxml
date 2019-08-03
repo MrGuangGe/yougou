@@ -43,5 +43,5 @@
         </view>
         <view class="footer_total_bottom">包含运费</view>
     </view>
-    <view class="footer_buy">结算({{totalNum}})</view>
+    <view class="footer_buy" bindtap="pay">结算({{totalNum}})</view>
 </view>

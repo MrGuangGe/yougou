@@ -60,7 +60,7 @@ Page({
     // 2.判断是否够选中 every循环项都返回true的时候  cartArr.every才会返回true
     // 注意：[].every  空数组调用every时 返回值为true 奇葩奇葩奇葩
     // let allChecked = cartArr.every(val => val.checked)
-    let allChecked = cartArr.length > 0 ? cartArr.every(val => val.checked) : false    
+    let allChecked = cartArr.length > 0 ? cartArr.every(val => val.checked) : false
     // 3.计算总价格
     let totalPrice = 0
     // 4.计算总数量
@@ -135,6 +135,33 @@ Page({
       goodsInfo[id].num += editnum
       // 3.1 调用setCartGoodsData 重新计算总数量与总价格
       this.setCartGoodsData(goodsInfo)
+    }
+  },
+  // 结算的点击事件
+  pay() {
+    const { address, goodsInfo } = this.data
+    // 把goodsInfo转换为数组
+    let cartArr = Object.values(goodsInfo)
+    // 只要购物车 有一个商品被勾选了   这个变量的值就应该为true
+    // some函数表示数组中有一个返回是true那么整个some的返回值就是true 
+    let hasCheckedCart = cartArr.some(v => v.checked)
+    // 1.判断是否选取了收货地址
+    if (!address.userName) {
+      wx.showToast({
+        title: '请选取收货地址！',
+        icon: 'none',
+        mask: true
+      })
+    } else if (!hasCheckedCart) { // 2.判断是否选中了需要购买的商品
+      wx.showToast({
+        title: '请选取商品！',
+        icon: 'none',
+        mask: true
+      })
+    } else {  // 3.以上条件都满足的话 进行页面的跳转
+      wx.navigateTo({
+        url: '/pages/pay/index'
+      })
     }
   }
 })
