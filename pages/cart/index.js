@@ -5,32 +5,10 @@ Page({
     // 商品信息
     goodsInfo: {},
     // 收货地址
-    address: {}
-  },
-  onLoad: function (options) {
-    /**
-     *  动态渲染方法1
-     *      通过循环遍历对象
-     */
-    // // 获取商品信息的业务处理
-    // let data = wx.getStorageSync("cart_add")
-    // // 因为商品的属性名为数字 需要遍历对象并且把属性值放到一个数组中
-    // let arr = Object.keys(data).map(item => data[item])
-    // // 把数据赋值给data中的goodsInfo
-    // this.setData({
-    //   goodsInfo: arr
-    // })
-
-    /**
-     * 动态渲染方法2
-     *      小程序中是支持循环遍历对象的 所以直接使用循环语法就好
-     */
-    // 获取商品信息的业务处理
-    let data = wx.getStorageSync("cart_add")
-    // 把数据赋值给data中的goodsInfo
-    this.setData({
-      goodsInfo: data
-    })
+    address: {},
+    allChecked: false,
+    totalPrice: 0,
+    totalNum: 0
   },
   // 添加收货地址
   addAddress() {
@@ -40,21 +18,13 @@ Page({
         // 1.以下代码表示已经授权了
         if (res.authSetting["scope.address"] === true || res.authSetting["scope.address"] === undefined) {
           // 1.1直接获取用户收货地址就好
-          // wx.chooseAddress({
-          //   success: (res) => {
-          //     console.log(res)
-          //   }
-          // })
+
         } else {
           // 2 没有授权的话 需要诱导用户打开授权信息
           wx.openSetting({
             success: (res) => {
               // 2.1授权成功 可以获取了
-              // wx.chooseAddress({
-              //   success: (res) => {
-              //     console.log(res)
-              //   }
-              // })
+
             }
           })
         }
@@ -76,9 +46,37 @@ Page({
     // 添加一个all属性 用来拼接地址栏
     address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
     // 赋值给data中的address
-    this.setData({
-      address
+    this.setData({ address })
+
+    // 从本地存储中获取商品信息
+    let cartData = wx.getStorageSync("cart_add")
+    // 把数据赋值给data中的goodsInfo
+    this.setData({ goodsInfo: cartData })
+
+    // 调用setCartGoodsData
+    this.setCartGoodsData(cartData)
+  },
+  // 重置购物车商品信息 计算总价格
+  setCartGoodsData(cartData) {
+    // 1.把cartData转换为数组
+    let cartArr = Object.values(cartData)
+    // 2.判断是否够选中 every循环项都返回true的时候  cartArr.every才会返回true
+    // 注意：[].every  空数组调用every时 返回值为true 奇葩
+    let allChecked = cartArr.every(val => val.checked)
+    // 3.计算总价格
+    let totalPrice = 0
+    // 4.计算总数量
+    let totalNum = 0
+    cartArr.forEach(val => {
+      if (val.checked) {
+        // 总价格
+        totalPrice += val.num * val.goods_price
+        // 总数量
+        totalNum += val.num
+      }
     })
+    // 修改data中的数据
+    this.setData({ goodsInfo: cartData, allChecked, totalPrice, totalNum })
   },
   // 购物车中的复选框的点击事件
   goodsCheckbox() {

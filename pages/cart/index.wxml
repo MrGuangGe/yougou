@@ -35,13 +35,13 @@
 <!-- 底部栏 -->
 <view class="footer">
     <checkbox-group class="footer_checkbox" bindchange="footerCheckbox">
-        <checkbox>全选</checkbox>
+        <checkbox checked="{{allChecked}}">全选</checkbox>
     </checkbox-group>
     <view class="footer_total">
         <view class="footer_total_top">
-            合计：<text>￥0</text>
+            合计：<text>￥{{totalPrice}}</text>
         </view>
         <view class="footer_total_bottom">包含运费</view>
     </view>
-    <view class="footer_buy">结算(0)</view>
+    <view class="footer_buy">结算({{totalNum}})</view>
 </view>
