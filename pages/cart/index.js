@@ -103,6 +103,38 @@ Page({
     }
     // 4.调用setCartGoodsData 重新计算总数量与总价格
     this.setCartGoodsData(goodsInfo)
+  },
+  // 编辑商品数量的点击事件
+  goodsNumEdit(event) {
+    // 1.获取要操作商品的id 与 需要编辑的数据+1 -1 与 data中的购物车对象goodsInfo
+    const { id, editnum } = event.currentTarget.dataset
+    let { goodsInfo } = this.data
+    // 2.判断 如果商品的数量为1时 提醒用户再往下减数量的话即弹框删除此商品
+    if (goodsInfo[id].num === 1 && editnum === -1) {
+      // 2.1弹框是否删除
+      wx.showModal({
+        title: '',
+        content: '您确定删除吗？',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#3CC51F',
+        success: (res) => {
+          if (res.confirm) {
+            // 2.2删除购物车中的商品  本质删除对象中的一个属性而已！
+            delete goodsInfo[id]
+            // 2.3.调用setCartGoodsData 重新计算总数量与总价格
+            this.setCartGoodsData(goodsInfo)
+          }
+        }
+      })
+    } else {
+      // 3.修改购物车对象中的num属性
+      goodsInfo[id].num += editnum
+      // 3.1 调用setCartGoodsData 重新计算总数量与总价格
+      this.setCartGoodsData(goodsInfo)
+    }
   }
 })
 

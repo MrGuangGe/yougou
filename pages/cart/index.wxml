@@ -23,9 +23,9 @@
             <view class="goods_deiail_btm">
                 <view class="goods_detail_price">￥{{item.goods_price}}</view>
                 <view class="goods_detail_numchnage">
-                    <button size="mini">-</button>
+                    <button size="mini" bindtap="goodsNumEdit" data-id="{{item.goods_id}}" data-editnum="{{-1}}">-</button>
                     <text>{{item.num}}</text>
-                    <button size="mini">+</button>
+                    <button size="mini" bindtap="goodsNumEdit" data-id="{{item.goods_id}}" data-editnum="{{1}}">+</button>
                 </view>
             </view>
         </view>
