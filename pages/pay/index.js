@@ -44,6 +44,27 @@ Page({
   },
   // 支付的点击事件
   pay() {
-    console.log("支付")
+    const token = wx.getStorageSync("token")
+    // 判断 是否存在token值
+    // 1.不存在 跳转到授权页面
+    if (!token) {
+      wx.navigateTo({
+        url: '/pages/auth/index'
+      })
+    } else {  // 2. 存在 进行支付的业务处理
+      console.log("支付")
+    }
   }
 })
+
+/*
+1 动态渲染的商品应该是 checked=true的这些商品
+2 获取订单编号
+  1 先获取用户登录的token值
+    0 判断有没有token
+      1 如果没有token
+        0 都是跳转到授权页面 进行获取 成功 再重新跳回支付页面
+        1 先获取用户信息
+        2 执行小程序登录 获取 code属性
+      2 有token 直接走业务流程
+ */

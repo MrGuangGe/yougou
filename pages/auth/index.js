@@ -1,66 +1,40 @@
-// pages/auth/index.js
+/* 
+1 点击授权按钮
+  1 获取用户信息 调用小程序 内置   getUserInfo
+     要获取 signature iv rawData encryptedData 4个参数
+  2 执行微信小程序登录 wx.login 返回
+    code 属性
+2 根据以上数据 调用第三方的登录  /users/wxlogin  POST请求
+  1 成功之后 返回 用户的token - 令牌 身份证。
+  2 把token存入到本地存储中 方便在其他页面使用 
+3 重新跳回到上一个页面
+ */
+
+// 引入封装好的发送异步请求的方法 promise
+import { request } from "../../request/index.js"
+import { wxlogin } from "../../utils/asyncWX.js"
+import regeneratorRuntime from '../../lib/runtime/runtime.js'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 1.获取用户信息
+  async getUserInfo(event) {
+    // console.log(event)
+    // 1.1 获取用户的 signature iv rawData encryptedData 
+    let { signature, iv, rawData, encryptedData } = event.detail
+    // 1.2 执行小程序的登录功能
+    let { code } = await wxlogin()
+    // 1.3 发送请求 获取token
+    let params = { signature, iv, rawData, encryptedData, code }
+    request({
+      url: "/users/wxlogin",
+      method: "POST",
+      data: { params }
+    })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 })
