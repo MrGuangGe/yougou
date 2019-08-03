@@ -1,5 +1,16 @@
-.cart .cart_address button {
+.cart .cart_address_btn button {
   margin: 10rpx;
+}
+.cart .cart_address_info {
+  display: flex;
+  padding: 14rpx;
+}
+.cart .cart_address_info .user_info {
+  flex: 4;
+}
+.cart .cart_address_info .user_tel {
+  flex: 2;
+  text-align: right;
 }
 .cart .cart_name {
   padding: 10rpx;
@@ -20,9 +31,10 @@
 }
 .cart .cart_goodsinfo .goods_image {
   flex: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0 20rpx;
+}
+.cart .cart_goodsinfo .goods_image image {
+  width: 80%;
 }
 .cart .cart_goodsinfo .goods_deiail {
   flex: 4;

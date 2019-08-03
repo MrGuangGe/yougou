@@ -3,7 +3,9 @@ Page({
     // // 商品信息
     // goodsInfo: [],
     // 商品信息
-    goodsInfo: {}
+    goodsInfo: {},
+    // 收货地址
+    address: {}
   },
   onLoad: function (options) {
     /**
@@ -37,21 +39,45 @@ Page({
       success: (res) => {
         // 1.以下代码表示已经授权了
         if (res.authSetting["scope.address"] === true || res.authSetting["scope.address"] === undefined) {
-          // 直接获取用户收货地址就好
-          wx.chooseAddress({
-            success: (res) => {
-              console.log(res)
-            }
-          })
+          // 1.1直接获取用户收货地址就好
+          // wx.chooseAddress({
+          //   success: (res) => {
+          //     console.log(res)
+          //   }
+          // })
         } else {
           // 2 没有授权的话 需要诱导用户打开授权信息
           wx.openSetting({
             success: (res) => {
-              console.log(res)
+              // 2.1授权成功 可以获取了
+              // wx.chooseAddress({
+              //   success: (res) => {
+              //     console.log(res)
+              //   }
+              // })
             }
           })
         }
+        // 1.1   2.1都会经过的步骤
+        wx.chooseAddress({
+          success: (res) => {
+            // console.log(res)
+            // 把数据保存到本地存储上
+            wx.setStorageSync("address", res)
+          }
+        })
       }
+    })
+  },
+  // 页面切换都会触发
+  onShow: function () {
+    // 从本地存储中获取地址信息
+    let address = wx.getStorageSync("address") || {}
+    // 添加一个all属性 用来拼接地址栏
+    address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
+    // 赋值给data中的address
+    this.setData({
+      address
     })
   },
   // 购物车中的复选框的点击事件
@@ -65,7 +91,6 @@ Page({
 })
 
 /*
-res.authSetting[scope.address]
 1 点击按钮 获取收货地址
   1 wx.chooseAddress -> 弹出对话框
     1 点击确定  直接获取值就ok

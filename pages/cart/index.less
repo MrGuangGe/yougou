@@ -1,7 +1,18 @@
 .cart{
-    .cart_address{
+    .cart_address_btn{
         button{
             margin: 10rpx;
+        }
+    }
+    .cart_address_info{
+        display: flex;
+        padding: 14rpx;
+        .user_info{
+            flex: 4;
+        }
+        .user_tel{
+            flex: 2;
+            text-align: right;
         }
     }
     .cart_name{
@@ -22,9 +33,10 @@
         }
         .goods_image{
             flex: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 0 20rpx;
+            image{
+                width: 80%;
+            }
         }
         .goods_deiail{
             flex: 4;

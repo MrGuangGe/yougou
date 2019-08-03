@@ -1,7 +1,14 @@
 <!-- 购物车里的商品 -->
 <view class="cart">
-    <view class="cart_address">
+    <view class="cart_address_btn" wx:if="{{!address.userName}}">
         <button plain type="primary" bindtap="addAddress">+收货地址</button>
+    </view>
+    <view class="cart_address_info" wx:else>
+        <view class="user_info">
+            <view class="user_name">收货人：{{address.userName}}</view>
+            <view class="user_address">{{address.all}}</view>
+        </view>
+        <view class="user_tel">{{address.telNumber}}</view>
     </view>
     <view class="cart_name">购物车</view>
     <view class="cart_goodsinfo" wx:for="{{goodsInfo}}" wx:for-index="key" wx:for-item="item" wx:key="goods_id">
