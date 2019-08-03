@@ -49,10 +49,7 @@ Page({
     this.setData({ address })
 
     // 从本地存储中获取商品信息
-    let cartData = wx.getStorageSync("cart_add")
-    // 把数据赋值给data中的goodsInfo
-    this.setData({ goodsInfo: cartData })
-
+    let cartData = wx.getStorageSync("cart_add") || {}
     // 调用setCartGoodsData
     this.setCartGoodsData(cartData)
   },
@@ -77,10 +74,18 @@ Page({
     })
     // 修改data中的数据
     this.setData({ goodsInfo: cartData, allChecked, totalPrice, totalNum })
+    // 防止数据改变了 刷新之后没有效果 所以也顺便存入到缓存中
+    wx.setStorageSync('cart_add', cartData)
   },
   // 购物车中的复选框的点击事件
-  goodsCheckbox() {
-
+  goodsCheckbox(event) {
+    // 1.获取要操作商品的id 与 data中的goodsInfo
+    const { id } = event.currentTarget.dataset
+    let { goodsInfo } = this.data
+    // 2.checked取反
+    goodsInfo[id].checked = !goodsInfo[id].checked
+    // 3.调用setCartGoodsData 重新计算总数量与总价格
+    this.setCartGoodsData(goodsInfo)
   },
   // 底部工具栏的复选框的点击事件
   footerCheckbox() {

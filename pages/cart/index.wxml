@@ -12,7 +12,7 @@
     </view>
     <view class="cart_name">购物车</view>
     <view class="cart_goodsinfo" wx:for="{{goodsInfo}}" wx:for-index="key" wx:for-item="item" wx:key="goods_id">
-        <checkbox-group class="goods_checkbox" bindchange="goodsCheckbox">
+        <checkbox-group class="goods_checkbox" bindchange="goodsCheckbox" data-id="{{item.goods_id}}">
             <checkbox checked="{{item.checked}}"></checkbox>
         </checkbox-group>
         <view class="goods_image">
