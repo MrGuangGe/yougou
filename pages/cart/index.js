@@ -58,8 +58,9 @@ Page({
     // 1.把cartData转换为数组
     let cartArr = Object.values(cartData)
     // 2.判断是否够选中 every循环项都返回true的时候  cartArr.every才会返回true
-    // 注意：[].every  空数组调用every时 返回值为true 奇葩
-    let allChecked = cartArr.every(val => val.checked)
+    // 注意：[].every  空数组调用every时 返回值为true 奇葩奇葩奇葩
+    // let allChecked = cartArr.every(val => val.checked)
+    let allChecked = cartArr.length > 0 ? cartArr.every(val => val.checked) : false
     // 3.计算总价格
     let totalPrice = 0
     // 4.计算总数量
