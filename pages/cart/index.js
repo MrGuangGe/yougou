@@ -1,16 +1,33 @@
 Page({
   data: {
+    // // 商品信息
+    // goodsInfo: [],
     // 商品信息
-    goodsInfo: []
+    goodsInfo: {}
   },
   onLoad: function (options) {
+    /**
+     *  动态渲染方法1
+     *      通过循环遍历对象
+     */
+    // // 获取商品信息的业务处理
+    // let data = wx.getStorageSync("cart_add")
+    // // 因为商品的属性名为数字 需要遍历对象并且把属性值放到一个数组中
+    // let arr = Object.keys(data).map(item => data[item])
+    // // 把数据赋值给data中的goodsInfo
+    // this.setData({
+    //   goodsInfo: arr
+    // })
+
+    /**
+     * 动态渲染方法2
+     *      小程序中是支持循环遍历对象的 所以直接使用循环语法就好
+     */
     // 获取商品信息的业务处理
     let data = wx.getStorageSync("cart_add")
-    // 因为商品的属性名为数字 需要遍历对象并且把属性值放到一个数组中
-    let arr = Object.keys(data).map(item => data[item])
     // 把数据赋值给data中的goodsInfo
     this.setData({
-      goodsInfo: arr
+      goodsInfo: data
     })
   },
   // 添加收货地址
@@ -36,6 +53,14 @@ Page({
         }
       }
     })
+  },
+  // 购物车中的复选框的点击事件
+  goodsCheckbox() {
+
+  },
+  // 底部工具栏的复选框的点击事件
+  footerCheckbox() {
+
   }
 })
 

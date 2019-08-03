@@ -62,6 +62,8 @@ Page({
       cartAdd[this.goodsInfo.goods_id] = this.goodsInfo
       // 添加一个num属性 以备后续对商品进行++操作
       cartAdd[this.goodsInfo.goods_id].num = 1
+      // 添加一个checked属性 以备后续描述商品复选框的状态
+      cartAdd[this.goodsInfo.goods_id].checked = true
     }
 
     // 3.把数据保存到本地
