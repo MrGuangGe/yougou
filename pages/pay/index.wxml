@@ -1,2 +1,38 @@
-<!--pages/pay/index.wxml-->
-<text>pages/pay/index.wxml</text>
+<!-- 购物车里的商品 -->
+<view class="cart">
+    <view class="cart_address_btn" wx:if="{{!address.userName}}">
+        <button plain type="primary" bindtap="addAddress">+收货地址</button>
+    </view>
+    <view class="cart_address_info" wx:else>
+        <view class="user_info">
+            <view class="user_name">收货人：{{address.userName}}</view>
+            <view class="user_address">{{address.all}}</view>
+        </view>
+        <view class="user_tel">{{address.telNumber}}</view>
+    </view>
+    <view class="cart_goodsinfo" wx:for="{{goodsInfo}}" wx:for-index="key" wx:for-item="item" wx:key="goods_id">
+        <view class="goods_image">
+            <image src="{{item.goods_small_logo}}" mode="widthFix" />
+        </view>
+        <view class="goods_deiail">
+            <navigator class="goods_deiail_name">{{item.goods_name}}</navigator>
+            <view class="goods_deiail_btm">
+                <view class="goods_detail_price">￥{{item.goods_price}}</view>
+                <view class="goods_detail_numchnage">
+                    <text>X{{item.num}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 底部栏 -->
+<view class="footer">
+    <view class="footer_total">
+        <view class="footer_total_top">
+            合计：<text>￥{{totalPrice}}</text>
+        </view>
+        <view class="footer_total_bottom">包含运费</view>
+    </view>
+    <view class="footer_buy" bindtap="pay">支付({{totalNum}})</view>
+</view>
