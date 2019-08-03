@@ -89,7 +89,20 @@ Page({
   },
   // 底部工具栏的复选框的点击事件
   footerCheckbox() {
-
+    // 1.获取data中的全选属性与购物车对象
+    let { allChecked, goodsInfo } = this.data
+    // 2.给全选属性allChecked取反
+    allChecked = !allChecked
+    // 3.修改购物车中商品的选中状态
+    for (const key in goodsInfo) {
+      // 有些属性是自己的 有些是原型链上的
+      // 当属性是自己的 就可以往下执行
+      if (goodsInfo.hasOwnProperty(key)) {
+        goodsInfo[key].checked = allChecked
+      }
+    }
+    // 4.调用setCartGoodsData 重新计算总数量与总价格
+    this.setCartGoodsData(goodsInfo)
   }
 })
 
