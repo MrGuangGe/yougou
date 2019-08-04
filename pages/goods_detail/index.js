@@ -1,5 +1,7 @@
 // 引入封装好的发送异步请求的方法 promise
 import { request } from "../../request/index.js"
+// 引入封装好的本地存储的文件
+import { setStorageSyncCart,getStorageSyncCart } from "../../utils/storage.js"
 
 Page({
   data: {
@@ -51,7 +53,7 @@ Page({
   cartAdd() {
     // 1.判断本地存储中是否存在这份数据了 
     // 该份数据要么有数据 要么是个空对象（第一次添加到本地存储中肯定是没有数据的 需要手动添加一个空对象）
-    let cartAdd = wx.getStorageSync("cart_add") || {}
+    let cartAdd = getStorageSyncCart() || {}
     // 2.添加商品 存在与否
     if (cartAdd[this.goodsInfo.goods_id]) {
       // 数据存在
@@ -67,7 +69,7 @@ Page({
     }
 
     // 3.把数据保存到本地
-    wx.setStorageSync("cart_add", cartAdd)
+    setStorageSyncCart(cartAdd)
     wx.showToast({
       title: '添加成功',
       icon: 'none',

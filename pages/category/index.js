@@ -1,5 +1,7 @@
 // 引入封装好的发送异步请求的方法 promise
 import { request } from "../../request/index.js"
+// 引入封装好的本地存储的文件
+import { setStorageSyncCategories, getStorageSyncCategories } from "../../utils/storage.js"
 
 Page({
   data: {
@@ -24,7 +26,7 @@ Page({
      * 5、发现本地缓存到数据且没有过期则直接使用就好
      */
     // 1、发送请求之前 判断一下本地是否已经存且没有过期的缓存数据
-    let cateData = wx.getStorageSync("cateData_storage")
+    let cateData = getStorageSyncCategories()
     // console.log(typeof cateData)  // 打印出看到的类型为空字符串 0 null "" false NAN 转bool类型为false
     if (!cateData) {
       // 2、发现本地没有数据 发请求获取数据
@@ -55,7 +57,7 @@ Page({
         // 把请求回来的数据赋值给全局变量cates
         this.cates = res.data.message
         // 3、把请求回来的数据缓存到本地上
-        wx.setStorageSync("cateData_storage", { time: Date.now(), data: this.cates })
+        setStorageSyncCategories({ time: Date.now(), data: this.cates })
         // 左侧栏数据
         let leftList = this.cates.map(val => ({ cat_id: val.cat_id, cat_name: val.cat_name }))
         // 右侧栏数据

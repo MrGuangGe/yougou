@@ -14,27 +14,38 @@
 import { request } from "../../request/index.js"
 import { wxlogin } from "../../utils/asyncWX.js"
 import regeneratorRuntime from '../../lib/runtime/runtime.js'
+// 引入封装好的本地存储的文件
+import { setStorageSyncToken } from "../../utils/storage.js"
 
 Page({
   // 1.获取用户信息
   async getUserInfo(event) {
-    // console.log(event)
-    // 1.1 获取用户的 signature iv rawData encryptedData 
-    let { signature, iv, rawData, encryptedData } = event.detail
-    // 1.2 执行小程序的登录功能
-    let { code } = await wxlogin()
-    // 1.3 发送请求 获取token
-    let params = { signature, iv, rawData, encryptedData, code }
-    request({
-      url: "/users/wxlogin",
-      method: "POST",
-      data: { params }
-    })
-      .then(res => {
-        console.log(res)
+    try {
+      // console.log(event)
+      // 1.1 获取用户的 signature iv rawData encryptedData 
+      let { signature, iv, rawData, encryptedData } = event.detail
+      // 1.2 执行小程序的登录功能
+      let { code } = await wxlogin()
+      // 1.3 发送请求 获取token
+      let params = { signature, iv, rawData, encryptedData, code }
+      request({
+        url: "/users/wxlogin",
+        method: "POST",
+        data: params
       })
-      .catch(err => {
-        console.log(err)
-      })
+        .then(res => {
+          const { token } = res.data.message
+          // 把token值存在本地存储上
+          setStorageSyncToken(token)
+
+          // 跳转到上一个页面
+          wx.navigateBack({
+            // delta 上几个页面
+            delta: 1
+          })
+        })
+    } catch (err) {
+      console.log(err)
+    }
   }
 })

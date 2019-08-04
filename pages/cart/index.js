@@ -1,3 +1,6 @@
+// 引入封装好的本地存储的文件
+import { setStorageSyncCart, getStorageSyncCart, setStorageSyncAddress, getStorageSyncAddress } from "../../utils/storage.js"
+
 Page({
   data: {
     // // 商品信息
@@ -33,7 +36,7 @@ Page({
           success: (res) => {
             // console.log(res)
             // 把数据保存到本地存储上
-            wx.setStorageSync("address", res)
+            setStorageSyncAddress(res)
           }
         })
       }
@@ -42,14 +45,14 @@ Page({
   // 页面切换都会触发
   onShow: function () {
     // 从本地存储中获取地址信息
-    let address = wx.getStorageSync("address") || {}
+    let address = getStorageSyncAddress() || {}
     // 添加一个all属性 用来拼接地址栏
     address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
     // 赋值给data中的address
     this.setData({ address })
 
     // 从本地存储中获取商品信息
-    let cartData = wx.getStorageSync("cart_add") || {}
+    let cartData = getStorageSyncCart() || {}
     // 调用setCartGoodsData
     this.setCartGoodsData(cartData)
   },
@@ -76,7 +79,7 @@ Page({
     // 修改data中的数据
     this.setData({ goodsInfo: cartData, allChecked, totalPrice, totalNum })
     // 防止数据改变了 刷新之后没有效果 所以也顺便存入到缓存中
-    wx.setStorageSync('cart_add', cartData)
+    setStorageSyncCart(cartData)
   },
   // 购物车中的复选框的点击事件
   goodsCheckbox(event) {
