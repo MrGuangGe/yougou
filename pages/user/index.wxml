@@ -9,3 +9,45 @@
         <view class="user_name">{{userInfo.nickName}}</view>
     </view>
 </view>
+
+<!-- 个人中心目录 -->
+<view class="content">
+    <view class="main">
+        <view class="collect_item">
+            <navigator>
+                <view class="collect_num">0</view>
+                <view class="collect_text">收藏的店铺</view>
+            </navigator>
+            <navigator>
+                <view class="collect_num">0</view>
+                <view class="collect_text">收藏的商品</view>
+            </navigator>
+            <navigator>
+                <view class="collect_num">0</view>
+                <view class="collect_text">关注的商品</view>
+            </navigator>
+            <navigator>
+                <view class="collect_num">0</view>
+                <view class="collect_text">我的足迹</view>
+            </navigator>
+        </view>
+        <view class="order_item">
+            <navigator>
+                <view class="order_icon iconfont icon-ding_dan"></view>
+                <view class="order_text">全部订单</view>
+            </navigator>
+            <navigator>
+                <view class="order_icon iconfont icon-ding_dan"></view>
+                <view class="order_text">代付款</view>
+            </navigator>
+            <navigator>
+                <view class="order_icon iconfont icon-ding_dan"></view>
+                <view class="order_text">待收货</view>
+            </navigator>
+            <navigator>
+                <view class="order_icon iconfont icon-ding_dan"></view>
+                <view class="order_text">退款/退货</view>
+            </navigator>
+        </view>
+    </view>
+</view>

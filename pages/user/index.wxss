@@ -27,3 +27,42 @@ page {
   font-size: 36rpx;
   color: #000;
 }
+.content .main {
+  margin-top: 16rpx;
+  padding: 0 16rpx;
+}
+.content .main .collect_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10rpx 0;
+  background-color: #fff;
+}
+.content .main .collect_item navigator {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content .main .collect_item navigator .collect_num {
+  color: var(--themeColor);
+}
+.content .main .order_item {
+  margin-top: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10rpx 0;
+  background-color: #fff;
+}
+.content .main .order_item navigator {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content .main .order_item navigator .order_icon {
+  color: var(--themeColor);
+}
