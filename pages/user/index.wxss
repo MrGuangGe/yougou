@@ -1,1 +1,29 @@
-/* pages/user/index.wxss */
+page {
+  background-color: #edece8;
+}
+.user {
+  height: 40vh;
+  overflow: hidden;
+  position: relative;
+}
+.user .avatar_bg {
+  height: 120%;
+  filter: blur(20rpx);
+}
+.user .userinfo {
+  position: absolute;
+  top: 33%;
+  left: 52%;
+  transform: translateX(-50%);
+}
+.user .userinfo .user_avatar {
+  width: 166rpx;
+  height: 166rpx;
+  background-color: deeppink;
+  border-radius: 50%;
+}
+.user .userinfo .user_name {
+  text-align: center;
+  font-size: 36rpx;
+  color: #000;
+}

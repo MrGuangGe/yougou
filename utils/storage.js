@@ -59,3 +59,18 @@ export const setStorageSyncToken = (str) => {
 export const getStorageSyncToken = () => {
     return wx.getStorageSync("tokenData")
 }
+
+/**
+ * 把用户信息存入到本地存储
+ * @param {Object} obj
+ */
+export const setStorageSyncUserInfo = (obj) => {
+    wx.setStorageSync("userData", obj)
+}
+
+/**
+ * 获取用户信息在本地存储中的数据
+ */
+export const getStorageSyncUserInfo = () => {
+    return wx.getStorageSync("userData")
+}

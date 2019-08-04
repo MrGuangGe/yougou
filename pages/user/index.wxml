@@ -1,1 +1,11 @@
-<view>个人</view>
+<view class="user">
+    <!-- 大背景 -->
+    <image class="avatar_bg" src="{{userInfo.avatarUrl}}" mode="widthFix" />
+    <!-- 用户头像与用户名 -->
+    <view class="userinfo">
+        <!-- 头像 -->
+        <image class="user_avatar" src="{{userInfo.avatarUrl}}" mode="widthFix" />
+        <!-- 微信名 -->
+        <view class="user_name">{{userInfo.nickName}}</view>
+    </view>
+</view>
