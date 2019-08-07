@@ -1,2 +1,49 @@
-<!--pages/order/index.wxml-->
-<text>pages/order/index.wxml</text>
+<Tabs tabs="{{tabs}}" bindAcceptIndex="handleAcceptIndex">
+    <block wx:if="{{tabs[0].isActive}}">
+        <view>
+            <view class="order_no">
+                <view class="order_no_text">订单编号</view>
+                <view class="order_no_detail">111111111111111111111111</view>
+            </view>
+            <view class="order_price">
+                <view class="order_price_text">订单价格</view>
+                <view class="order_price_detail">￥9999</view>
+            </view>
+            <view class="order_date">
+                <view class="order_date_text">订单日期</view>
+                <view class="order_date_detail">2019/10-10 下午10:10:10</view>
+            </view>
+        </view>
+        <view>
+            <view class="order_no">
+                <view class="order_no_text">订单编号</view>
+                <view class="order_no_detail">111111111111111111111111</view>
+            </view>
+            <view class="order_price">
+                <view class="order_price_text">订单价格</view>
+                <view class="order_price_detail">￥9999</view>
+            </view>
+            <view class="order_date">
+                <view class="order_date_text">订单日期</view>
+                <view class="order_date_detail">2019/10-10 下午10:10:10</view>
+            </view>
+        </view>
+        <view>
+            <view class="order_no">
+                <view class="order_no_text">订单编号</view>
+                <view class="order_no_detail">111111111111111111111111</view>
+            </view>
+            <view class="order_price">
+                <view class="order_price_text">订单价格</view>
+                <view class="order_price_detail">￥9999</view>
+            </view>
+            <view class="order_date">
+                <view class="order_date_text">订单日期</view>
+                <view class="order_date_detail">2019/10-10 下午10:10:10</view>
+            </view>
+        </view>
+    </block>
+    <block wx:elif="{{tabs[1].isActive}}">222</block>
+    <block wx:elif="{{tabs[2].isActive}}">333</block>
+    <block wx:else>444</block>
+</Tabs>

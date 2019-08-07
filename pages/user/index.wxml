@@ -32,20 +32,20 @@
             </navigator>
         </view>
         <view class="order_item">
-            <navigator>
+            <navigator url="/pages/order/index?type=1">
                 <view class="order_icon iconfont icon-ding_dan"></view>
                 <view class="order_text">全部订单</view>
             </navigator>
-            <navigator>
-                <view class="order_icon iconfont icon-ding_dan"></view>
+            <navigator url="/pages/order/index?type=2">
+                <view class="order_icon iconfont icon-fukuantongzhi"></view>
                 <view class="order_text">代付款</view>
             </navigator>
-            <navigator>
-                <view class="order_icon iconfont icon-ding_dan"></view>
+            <navigator url="/pages/order/index?type=3">
+                <view class="order_icon iconfont icon-receipt-address"></view>
                 <view class="order_text">待收货</view>
             </navigator>
-            <navigator>
-                <view class="order_icon iconfont icon-ding_dan"></view>
+            <navigator url="/pages/order/index?type=4">
+                <view class="order_icon iconfont icon-tuihuotuikuan_dianpu"></view>
                 <view class="order_text">退款/退货</view>
             </navigator>
         </view>

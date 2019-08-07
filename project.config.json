@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -95,6 +95,14 @@
 					"id": -1,
 					"name": "登录",
 					"pathName": "pages/login/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "订单",
+					"pathName": "pages/order/index",
+					"query": "",
 					"scene": null
 				}
 			]
