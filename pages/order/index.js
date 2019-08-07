@@ -65,6 +65,11 @@ Page({
     })
       .then(res => {
         const { orders } = res.data.message
+        // 修改时间的格式
+        orders.forEach(val => {
+          let date = new Date(val.create_time * 1000)
+          val.create_time_cn = date.toLocaleString()
+        })
         this.setData({ allOrderList: orders })
       })
       .catch(err => {
