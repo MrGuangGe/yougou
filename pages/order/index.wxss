@@ -20,6 +20,7 @@
 .order_price .order_price_detail {
   flex: 1;
   text-align: right;
+  color: var(--themeColor);
 }
 .order_date {
   display: flex;
