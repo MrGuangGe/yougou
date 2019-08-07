@@ -1,11 +1,13 @@
 // 引入封装好的发送异步请求的方法 promise
 import { request } from "../../request/index.js"
 // 引入封装好的本地存储的文件
-import { setStorageSyncCart,getStorageSyncCart } from "../../utils/storage.js"
+import { setStorageSyncCart, getStorageSyncCart } from "../../utils/storage.js"
 
 Page({
   data: {
-    goodsDetailList: {}
+    goodsDetailList: {},
+    // 是否收藏了商品
+    isCollect: false
   },
   // 商品的完整信息
   goodsInfo: {},
@@ -21,6 +23,11 @@ Page({
     })
       .then(res => {
         // console.log(res.data)
+        // 1 判断当前商品是否在缓存 是否被选中收藏
+        let collect = wx.getStorageSync("collect") || []
+        // 2 isCollect 商品是否被收藏过 
+        // some 只要有一个循环项返回true 把么整个循环体则为true
+        let isCollect = collect.some(val => val.goods_id === this.goodsInfo.goods_id)
         this.setData({
           goodsDetailList: {
             goods_id: res.data.message.goods_id,
@@ -29,7 +36,8 @@ Page({
             goods_name: res.data.message.goods_name,
             // 因为iphone手机不支持.webp后缀的图片 所以最好把.webp改为.jpg/.png
             goods_introduce: res.data.message.goods_introduce.replace(/\.webp/g, ".jpg")
-          }
+          },
+          isCollect
         })
 
         // 把请求回来的数据赋值给全局变量goodsInfo
@@ -76,6 +84,49 @@ Page({
       // 添加遮罩层 弹窗时用户无法操作页面的按钮
       mask: true
     })
+  },
+  // 收藏商品的点击事件
+  collectGoods() {
+    /* 
+      0 页面一打开了 应该先判断当前商品有没有被选中
+        1 有 让页面反生变化 
+      1 存入大量复杂数据的时候 一般是对象/数组  --这里是数组  
+      2 获取到 缓存中的数据 collect  || []
+      3 把当前商品对象 存入到 数组中
+      4 把数组 直接存入到缓存中即可
+
+      1 获取到 缓存中的数据 collect  || []
+      2 判断当前商品是否存在于缓存数据中
+        1 已经存在 删除数组中的这个数据
+        2 未存在 添加到数组即可
+      3 根据操作的不同 给出不同的提示
+        1 弹窗提示
+        2 页面的收藏图标也发生改变 
+    */
+    let collect = wx.getStorageSync("collect") || []
+    // 根据索引判断某个元素是否被收藏
+    let index = collect.findIndex(val => val.goods_id === this.goodsInfo.goods_id)
+    if (index === -1) {
+      // 缓存中没有数据
+      collect.push(this.goodsInfo)
+      wx.showToast({
+        title: '收藏成功',
+        icon: 'none',
+        mask: true
+      })
+      this.setData({ isCollect: true })
+    } else {
+      // 缓存中有数据 点击则代表删除
+      collect.splice(index, 1)
+      wx.showToast({
+        title: '取消收藏',
+        icon: 'none',
+        mask: true
+      })
+      this.setData({ isCollect: false })
+    }
+    // 缓存到本地存储中
+    wx.setStorageSync("collect", collect)
   }
 })
 

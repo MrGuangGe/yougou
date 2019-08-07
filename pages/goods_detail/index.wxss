@@ -36,6 +36,9 @@ swiper image {
   color: #666;
   font-size: 36rpx;
 }
+.goods .goods_content .goods_content_name .goods_content_name-right .icon-shoucang1 {
+  color: deeppink;
+}
 .goods .goods_image .goods_image_name {
   color: var(--themeColor);
   padding: 10rpx;

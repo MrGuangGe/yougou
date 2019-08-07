@@ -11,8 +11,8 @@
         <view class="goods_content_price">${{goodsDetailList.goods_price}}</view>
         <view class="goods_content_name">
             <view class="goods_content_name-left">{{goodsDetailList.goods_name}}</view>
-            <view class="goods_content_name-right">
-                <view class="iconfont icon-shoucang"></view>
+            <view class="goods_content_name-right" bindtap="collectGoods">
+                <view class="iconfont {{isCollect?'icon-shoucang1':'icon-shoucang'}}"></view>
                 <view class="shoucang">收藏</view>
             </view>
         </view>
